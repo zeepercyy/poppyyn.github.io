@@ -155,16 +155,14 @@ changeThemeMobile.addEventListener("click", () => {
     }
 })
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Menentukan elemen yang akan diposisikan di tengah halaman
-    const targetElement = document.querySelector(window.location.hash);
-  
-    // Menghitung posisi vertikal elemen
-    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-  
-    // Menggeser posisi scroll ke elemen terpilih
-    window.scrollTo({
-      top: targetPosition,
-      behavior: 'smooth' // Opsi untuk menggeser scroll dengan efek lembut
-    });
-  })
+document.addEventListener("DOMContentLoaded", function() {
+    if (window.location.hash) {
+        var element = document.querySelector(window.location.hash);
+        if (element) {
+            window.scrollTo({
+                top: element.offsetTop - 100, // 100 px offset from the top
+                behavior: "smooth" // Smooth scrolling
+            });
+        }
+    }
+});
